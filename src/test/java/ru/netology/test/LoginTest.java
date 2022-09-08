@@ -33,7 +33,7 @@ public class LoginTest {
 
     @Test
     void shouldBeValidAuthorization() {
-        DataHelper.UserDto user = new DataHelper().getUserFirstPassword();
+        DataHelper.AuthInfo user = new DataHelper().getUserFirstPassword();
         SqlHelper.createUser(user);
 
         new LoginPage() .sigIn(user.getLogin(), user.getPassword()).inputCode(SqlHelper.getVerificationCode(user.getId()));
@@ -41,7 +41,7 @@ public class LoginTest {
 
     @Test
     void shouldBlockUserAfterInvalidPassword() {
-        DataHelper.UserDto user = new DataHelper().getUserFirstPassword();
+        DataHelper.AuthInfo user = new DataHelper().getUserFirstPassword();
         SqlHelper.createUser(user);
 
         new LoginPage().invalidSigIn(user.getLogin());

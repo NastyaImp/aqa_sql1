@@ -5,21 +5,21 @@ import lombok.*;
 
 import java.util.Locale;
 
-
 public class DataHelper {
-    public UserDto getUserFirstPassword() {
-        Faker user = new Faker(new Locale("en"));
-        String id = user.idNumber().valid();
-        String name = user.name().firstName();
+
+    public AuthInfo getUserFirstPassword() {
+        Faker faker = new Faker(new Locale("en"));
+        String id = faker.idNumber().valid();
+        String login = faker.name().firstName();
         String password = "qwerty123";
         String encryptedPassword = "$2a$10$MBH6363cULaEA999pr9tHOc7Mv8.HnVvbnA.sMOYoatqiSEkdzsfq";
-        return new UserDto(id, name, password, encryptedPassword);
+        return new AuthInfo(id, login, password, encryptedPassword);
     }
 
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
-    public class UserDto {
+    public class AuthInfo {
         private String id;
         private String login;
         private String password;

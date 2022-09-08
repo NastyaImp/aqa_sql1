@@ -27,7 +27,7 @@ public class SqlHelper {
         );
     }
 
-    public static void createUser(DataHelper.UserDto user) {
+    public static void createUser(DataHelper.AuthInfo user) {
 
         val dataSQL = "INSERT INTO users(id, login, password) VALUES (?, ?, ?);";
 
